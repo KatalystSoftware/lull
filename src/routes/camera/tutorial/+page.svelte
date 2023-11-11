@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import BPMMeter from '$lib/components/bpm-meter.svelte';
-	import { mediaStream, method, samplingCanvas, videoElement } from '$lib/stores';
+	import BpmDisplay from '$lib/components/bpm-display.svelte';
+	import { averageBpm, mediaStream, method, samplingCanvas, videoElement } from '$lib/stores';
 
 	const finishTutorial = () => {
 		$method = 'camera';
@@ -16,11 +16,11 @@
 
 	<p>Be sure to hold the phone still, preferable lay it down on a solid surface</p>
 
-	<BPMMeter />
+	<BpmDisplay />
 
 	<button
 		on:click={finishTutorial}
-		disabled
+		disabled={!$averageBpm}
 		class="bg-emerald-500 text-emerald-50 font-semibold text-lg py-2 px-3 rounded-full disabled:opacity-50 disabled:cursor-not-allowed"
 		>Finish tutorial</button
 	>
