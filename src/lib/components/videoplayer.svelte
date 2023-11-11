@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
+	import AudioPlayer from '$lib/components/audioplayer.svelte';
 
 	export let bpm: number | undefined;
 	let _class: string | undefined = '';
@@ -39,7 +40,7 @@
 </script>
 
 <div bind:this={videoPlayer} class={cn('relative', _class)} />
-
+<AudioPlayer {bpm}></AudioPlayer>
 <style lang="postcss">
 	:global(.video) {
 		@apply absolute top-0 opacity-0;
