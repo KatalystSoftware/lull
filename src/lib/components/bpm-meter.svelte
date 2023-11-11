@@ -2,7 +2,7 @@
 	import HeartrateIcon from '$lib/icons/HeartRate.svelte';
 	import { mediaStream, samplingCanvas, videoElement } from '$lib/stores';
 	import { analyzeData, averageBrightness, calculateBpm, type Sample } from '$lib/utils/bpm';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 
 	$: samplingContext = $samplingCanvas?.getContext('2d', {
 		willReadFrequently: true
@@ -70,10 +70,14 @@
 			monitorLoop();
 		}, 1000);
 	});
+
+	onDestroy(() => {
+		stopMonitoring();
+	});
 </script>
 
 <p
-	class="text-2xl text-center self-center bg-red-200 rounded-full p-8 flex flex-col items-center w-fit aspect-square"
+	class="text-2xl text-center self-center bg-red-200 rounded-full w-xs p-8 flex flex-col items-center w-fit aspect-square"
 >
 	<HeartrateIcon class="inline-block w-6 h-6 text-red-950" />
 	<span class="text-4xl font-bold"

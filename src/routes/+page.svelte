@@ -1,6 +1,15 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import Camera from '$lib/icons/Camera.svelte';
 	import Watch from '$lib/icons/Watch.svelte';
+	import { method } from '$lib/stores';
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		if ($method === 'camera') {
+			goto('/camera/scenes');
+		}
+	});
 </script>
 
 <h1 class="uppercase text-4xl text-center">lull</h1>

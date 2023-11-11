@@ -43,7 +43,11 @@
 		}
 	};
 
-	onMount(obtainVideoCamera);
+	onMount(() => {
+		if (!$mediaStream) {
+			obtainVideoCamera();
+		}
+	});
 </script>
 
 <slot />
