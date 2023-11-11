@@ -21,7 +21,7 @@
 	const maxSamples = 60 * 5; // 5 minutes of samples
 
 	let bpmMeasurements: number[] = [];
-	const maxBpmMeasurements = 100;
+	const maxBpmMeasurements = 20;
 
 	let averageBpm: number | undefined;
 
