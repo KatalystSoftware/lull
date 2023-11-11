@@ -39,5 +39,8 @@
 		"vite-plugin-pwa": "^0.16.7",
 		"vitest": "^0.34.6"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@fontsource/kodchasan": "^5.0.17"
+	}
 }

@@ -1,4 +1,5 @@
 <script>
+	import '@fontsource/kodchasan';
 	import '../app.css';
 
 	import { pwaInfo } from 'virtual:pwa-info';
@@ -13,6 +14,6 @@
 	<title>lull</title>
 </svelte:head>
 
-<main>
+<main class="p-4 flex flex-col bg-emerald-50 gap-4 h-screen">
 	<slot />
 </main>
