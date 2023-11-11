@@ -4,7 +4,7 @@
 	import { averageBpmReal } from '$lib/stores';
 </script>
 
-<main class="absolute top-0 left-0 h-screen z-10 flex-1 flex w-full">
+<main class="absolute top-0 left-0 z-10 flex-1 h-full flex w-full">
 	<h2 class="sr-only">Camera Tutorial - Step 3</h2>
 
 	<BpmDisplay

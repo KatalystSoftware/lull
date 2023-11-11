@@ -9,7 +9,7 @@
 	$: averageBpm = demo ? $averageBpmFake : $averageBpmReal;
 </script>
 
-<main class="absolute top-0 left-0 h-screen z-10 flex flex-1 w-full">
+<main class="absolute top-0 left-0 h-full z-10 flex flex-1 w-full">
 	<h2 class="sr-only">Scene</h2>
 
 	<BpmDisplay
