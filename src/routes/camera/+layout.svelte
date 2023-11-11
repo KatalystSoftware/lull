@@ -3,7 +3,6 @@
 	import { mediaStream, samplingCanvas, videoElement } from '$lib/stores';
 	import { onDestroy, onMount } from 'svelte';
 
-	const SUPPORTS_MEDIA_DEVICES = browser && 'mediaDevices' in navigator;
 	const SUPPORTS_IMAGE_CAPTURE = browser && 'ImageCapture' in window;
 
 	const obtainVideoCamera = async () => {

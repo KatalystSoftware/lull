@@ -1,12 +1,19 @@
 import { browser } from '$app/environment';
 import { analyzeData, averageBrightness, calculateBpm, type Sample } from '$lib/utils/bpm';
-import { derived, writable, type Readable, type Updater, type Writable } from 'svelte/store';
+import {
+	derived,
+	writable,
+	type Readable,
+	type Updater,
+	type Writable,
+	readable
+} from 'svelte/store';
 
 export const videoElement = writable<HTMLVideoElement | null>(null);
 export const samplingCanvas = writable<HTMLCanvasElement | null>(null);
 export const mediaStream = writable<MediaStream | null>(null);
 
-export const averageBpm: Readable<number | undefined> = derived(
+export const averageBpmReal: Readable<number | undefined> = derived(
 	[videoElement, samplingCanvas, mediaStream],
 	([$videoElement, $samplingCanvas, $mediaStream], set) => {
 		const samplingContext = $samplingCanvas?.getContext('2d', {
@@ -86,6 +93,18 @@ export const averageBpm: Readable<number | undefined> = derived(
 		};
 	}
 );
+
+import { getNextHeartRate } from '../resources/test_bpm_timeseries';
+
+export const averageBpmFake = readable(getNextHeartRate(), (set) => {
+	set(getNextHeartRate());
+
+	const interval = setInterval(() => {
+		set(getNextHeartRate());
+	}, 1000);
+
+	return () => clearInterval(interval);
+});
 
 function storable<T>(key: string, defaultValue: T): Writable<T> {
 	const store = writable(defaultValue);

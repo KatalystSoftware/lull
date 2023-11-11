@@ -1,10 +1,5 @@
 <script lang="ts">
 	import Landscape from '$lib/icons/Landscape.svelte';
-	const getDateDaysBefore = (days: number) => {
-		const date = new Date();
-		date.setDate(date.getDate() - days);
-		return date;
-	};
 
 	const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
 </script>
