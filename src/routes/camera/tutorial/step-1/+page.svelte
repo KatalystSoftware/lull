@@ -10,7 +10,7 @@
 		Place your index finger over the flashlight and back camera
 	</p>
 
-	<BpmDisplay bpm={$averageBpmReal}/>
+	<BpmDisplay label bpm={$averageBpmReal} />
 
 	<p class="text-center">
 		Be sure to hold the phone still, preferable lay it down on a solid surface

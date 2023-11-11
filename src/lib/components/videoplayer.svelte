@@ -3,12 +3,17 @@
 	import { onMount } from 'svelte';
 
 	export let bpm: number | undefined;
+	let _class: string | undefined = '';
+	export { _class as class };
 
 	import { getBpmRangeName, getVideoSpeedFromBpm } from '$lib/../resources/bpm_limits';
+	import { cn } from '$lib/utils';
 	import { SpecialVideoPlayer } from '$lib/video-player';
 
+	let videoPlayer: HTMLDivElement | undefined;
+
 	onMount(() => {
-		window.videoPlayer = new SpecialVideoPlayer(document.getElementById('special-video-player')!, {
+		window.videoPlayer = new SpecialVideoPlayer(videoPlayer!, {
 			veryLow: '/lull_videot/lull_lvl1.mp4',
 			low: '/lull_videot/lull_lvl2.mp4',
 			medium: '/lull_videot/lull_lvl3.mp4',
@@ -20,7 +25,6 @@
 	$: {
 		if (browser) {
 			if (bpm !== undefined) {
-				//console.log('type', getBpmRangeName)
 				const level = getBpmRangeName(bpm);
 				let videoPlayer = window['videoPlayer'];
 				if (videoPlayer instanceof SpecialVideoPlayer) {
@@ -34,16 +38,15 @@
 	}
 </script>
 
-<div id="special-video-player" style="position: relative;z-index: 1;"></div>
+<div bind:this={videoPlayer} class={cn('relative', _class)} />
 
-<style>
+<style lang="postcss">
 	:global(.video) {
-		position: absolute;
-		opacity: 0;
+		@apply absolute top-0 opacity-0;
 	}
 
 	:global(.visible-video) {
+		@apply !opacity-100;
 		transition: opacity 3s linear;
-		opacity: 1 !important;
 	}
 </style>

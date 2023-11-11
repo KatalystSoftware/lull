@@ -7,18 +7,20 @@
 	import LoadingIcon from '$lib/icons/Loading.svelte';
 	import { cn } from '$lib/utils';
 	export let abstract = false;
+	export let label = false;
+	export let size: 'sm' | 'lg' = 'lg';
 
 	let _class = '';
 	export { _class as class };
 
-	export let bpm : number | undefined
+	export let bpm: number | undefined;
 
-	import {bpm_limits} from '$lib/../resources/bpm_limits';
+	import { bpm_limits } from '$lib/../resources/bpm_limits';
 </script>
 
 <p class={cn('w-xs flex flex-col items-center gap-2 text-center z-10', _class)}>
 	{#if bpm}
-		<span class="text-8xl font-medium w-xs">
+		<span class={cn('text-8xl font-medium w-xs', size === 'lg' ? 'text-8xl' : 'text-4xl')}>
 			{#if !abstract}
 				{bpm?.toLocaleString('en', {
 					minimumFractionDigits: 0,
@@ -43,7 +45,7 @@
 			<LoadingIcon class="w-12 h-12" />
 		</span>
 	{/if}
-	{#if !abstract}
+	{#if label}
 		<span class="font-medium">BPM</span>
 	{/if}
 </p>
