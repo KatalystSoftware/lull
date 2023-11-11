@@ -4,6 +4,9 @@
 	const SUPPORS_MEDIA_DEVICES = browser && 'mediaDevices' in navigator;
 	const SUPPORTS_IMAGE_CAPTURE = browser && 'ImageCapture' in window;
 
+	const MIN_BPM = 30;
+	const MAX_BPM = 200;
+
 	let videoElement: HTMLVideoElement | null = null;
 	let samplingCanvas: HTMLCanvasElement | null = null;
 	$: samplingContext = samplingCanvas?.getContext('2d', {
@@ -17,7 +20,10 @@
 	let sampleBuffer: Sample[] = [];
 	const maxSamples = 60 * 5; // 5 minutes of samples
 
-	let bpm: number | undefined;
+	let bpmMeasurements: number[] = [];
+	const maxBpmMeasurements = 100;
+
+	let averageBpm: number | undefined;
 
 	let loading = false;
 	const obtainVideoCamera = async () => {
@@ -147,7 +153,10 @@
 		const averageInterval =
 			(samples[samples.length - 1].time - samples[0].time) / (samples.length - 1);
 
-		return 60000 / averageInterval;
+		const bpm = 60000 / averageInterval;
+
+		// Clamp bpm to a reasonable range
+		return Math.max(MIN_BPM, Math.min(bpm, MAX_BPM));
 	};
 
 	const processFrame = () => {
@@ -167,28 +176,44 @@
 
 		const dataStats = analyzeData(sampleBuffer);
 
-		// TODO: Store BPM values in array and display moving average
 		const calculatedBpm = calculateBpm(dataStats.crossings);
-		bpm = calculatedBpm;
+		if (calculatedBpm) {
+			bpmMeasurements.push(calculatedBpm);
+			if (bpmMeasurements.length > maxBpmMeasurements) {
+				bpmMeasurements.shift();
+			}
+		}
+		averageBpm = bpmMeasurements.length
+			? bpmMeasurements.reduce((a, c) => a + c) / bpmMeasurements.length
+			: undefined;
 	};
 </script>
 
 <div>
-	{#if !SUPPORS_MEDIA_DEVICES}
+	{#if browser && !SUPPORS_MEDIA_DEVICES}
 		<p>Media devices not supported</p>
 	{/if}
-	{#if !SUPPORTS_IMAGE_CAPTURE}
+	{#if browser && !SUPPORTS_IMAGE_CAPTURE}
 		<p>Image capture not supported</p>
 	{/if}
 
 	{#if loading}
 		<p>Loading...</p>
 	{/if}
-	<p>BPM: {bpm?.toLocaleString('en', { maximumSignificantDigits: 2 }) ?? '-'}</p>
+	<p class="text-2xl">
+		BPM: {averageBpm?.toLocaleString('en', {
+			maximumSignificantDigits: 3,
+			maximumFractionDigits: 0,
+			minimumFractionDigits: 0
+		}) ?? '-'}
+	</p>
 	<div class="sr-only">
 		<!-- svelte-ignore a11y-media-has-caption -->
 		<video id="camera-feed" bind:this={videoElement} />
 		<canvas id="sampling-canvas" width="30" height="30" bind:this={samplingCanvas} />
 	</div>
-	<button on:click={obtainVideoCamera}>Get camera</button>
+	<button
+		class="bg-emerald-500 text-emerald-50 text-lg py-2 px-3 rounded-full"
+		on:click={obtainVideoCamera}>Get camera</button
+	>
 </div>
