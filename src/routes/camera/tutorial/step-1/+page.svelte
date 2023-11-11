@@ -3,7 +3,7 @@
 	import { averageBpmReal } from '$lib/stores';
 </script>
 
-<main class="p-4 flex flex-1 flex-col justify-start gap-8">
+<main class="p-4 flex flex-1 flex-col justify-start gap-12 md:gap-16">
 	<h2 class="sr-only">Camera Tutorial- Step 1</h2>
 
 	<p class="font-medium text-xl text-center">
