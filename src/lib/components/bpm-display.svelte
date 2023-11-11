@@ -44,7 +44,7 @@
 			{/if}
 		</span>
 	{:else}
-		<span class="w-[96px] aspect-square flex items-center justify-center">
+		<span class="text-8xl font-medium w-xs">
 			<LoadingIcon class="w-12 h-12" />
 		</span>
 	{/if}

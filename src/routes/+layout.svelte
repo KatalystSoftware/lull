@@ -15,7 +15,7 @@
 	<title>lull</title>
 </svelte:head>
 
-<div class="p-8 flex flex-col gap-8 h-screen relative backdrop-blur-2xl bg-red-50/50">
+<div class="p-4 flex flex-col gap-8 h-screen relative backdrop-blur-2xl bg-red-50/50">
 	<h1 class="text-left uppercase text-3xl font-title"><a href="/">lu<br />ll</a></h1>
 	<slot />
 </div>

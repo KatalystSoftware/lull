@@ -8,6 +8,9 @@ export default {
 			fontFamily: {
 				title: ['Kodchasan', ...defaultTheme.fontFamily.sans],
 				sans: ['Poppins', ...defaultTheme.fontFamily.sans]
+			},
+			height: {
+				screen: ['100vh', '100dvh']
 			}
 		}
 	},
