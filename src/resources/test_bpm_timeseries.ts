@@ -14,7 +14,6 @@ export const getNextHeartRate = () => {
 	return test_time_series[tick++ % test_time_series.length];
 };
 
-
 export const test_time_series = [
 	83, 82, 82, 81, 80, 79, 78, 77, 76, 75, 74, 75, 72, 70, 70, 68, 68, 70, 75, 79, 80, 80, 79, 79,
 	78, 77, 77, 76, 75, 75, 74, 73, 72, 71, 70, 69, 69, 68, 67, 66, 66, 66, 66, 65, 64, 64, 64, 63,

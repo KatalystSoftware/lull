@@ -2,7 +2,7 @@ export class SpecialVideoPlayer {
 	crossfadeTimeMs = 3000;
 	currentlyActiveVideo: string | null = null;
 	videoElements: { [key: string]: HTMLVideoElement } = {};
-	interval : NodeJS.Timeout | null = null;
+	interval: NodeJS.Timeout | null = null;
 
 	constructor(
 		public element: HTMLElement,
@@ -15,23 +15,22 @@ export class SpecialVideoPlayer {
 		}
 		this.interval = setInterval(() => {
 			this.processActivationQueue();
-		}, 3000)
-		
+		}, 3000);
 	}
 
-	activationQueue : string[] = [];
+	activationQueue: string[] = [];
 
 	processActivationQueue() {
 		if (this.activationQueue.length === 0) {
-			return
+			return;
 		}
 
 		if (this.activationQueue.length > 1) {
-			this.activationQueue = [this.activationQueue.at(-1)!]
+			this.activationQueue = [this.activationQueue.at(-1)!];
 		}
-		
+
 		const videoId = this.activationQueue[0];
-		this.activationQueue.shift()
+		this.activationQueue.shift();
 
 		const activateVideo = (el: HTMLVideoElement) => {
 			el.play();
@@ -57,7 +56,7 @@ export class SpecialVideoPlayer {
 			return;
 		}
 
-		console.log('activating new video', videoId)
+		console.log('activating new video', videoId);
 		deactivateVideo(this.videoElements[this.currentlyActiveVideo]);
 		activateVideo(this.videoElements[videoId]);
 	}
