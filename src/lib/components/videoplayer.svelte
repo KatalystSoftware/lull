@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import AudioPlayer from '$lib/components/audioplayer.svelte';
 
 	export let bpm: number | undefined;
@@ -37,6 +37,15 @@
 			}
 		}
 	}
+
+	onDestroy(() => {
+		if (browser) {
+			let interval = window?.videoPlayer?.interval;
+			if (interval) {
+				clearInterval(interval);
+			}
+		}
+	});
 </script>
 
 <div bind:this={videoPlayer} class={cn('relative', _class)} />

@@ -2,6 +2,7 @@ export class SpecialVideoPlayer {
 	crossfadeTimeMs = 3000;
 	currentlyActiveVideo: string | null = null;
 	videoElements: { [key: string]: HTMLVideoElement } = {};
+	interval : NodeJS.Timeout | null = null;
 
 	constructor(
 		public element: HTMLElement,
@@ -12,12 +13,28 @@ export class SpecialVideoPlayer {
 			element.appendChild(videoElement);
 			this.videoElements[key] = videoElement;
 		}
+		this.interval = setInterval(() => {
+			this.processActivationQueue();
+		}, 3000)
+		
 	}
 
-	setActiveVideo(videoId: string) {
+	activationQueue : string[] = [];
+
+	processActivationQueue() {
+		if (this.activationQueue.length === 0) {
+			return
+		}
+
+		if (this.activationQueue.length > 1) {
+			this.activationQueue = [this.activationQueue.at(-1)!]
+		}
+		
+		const videoId = this.activationQueue[0];
+		this.activationQueue.shift()
+
 		const activateVideo = (el: HTMLVideoElement) => {
 			el.play();
-			el.currentTime = 0;
 			this.currentlyActiveVideo = videoId;
 			el.classList.remove('visible-video');
 			setTimeout(() => {
@@ -28,7 +45,6 @@ export class SpecialVideoPlayer {
 
 		const deactivateVideo = (_el: HTMLVideoElement) => {
 			// this function is not useful if old videos are not paused for performance
-			this.currentlyActiveVideo = null;
 		};
 
 		if (this.currentlyActiveVideo === null) {
@@ -41,8 +57,13 @@ export class SpecialVideoPlayer {
 			return;
 		}
 
+		console.log('activating new video', videoId)
 		deactivateVideo(this.videoElements[this.currentlyActiveVideo]);
 		activateVideo(this.videoElements[videoId]);
+	}
+
+	setActiveVideo(videoId: string) {
+		this.activationQueue.push(videoId);
 	}
 
 	static createVideoElement(path: string): HTMLVideoElement {

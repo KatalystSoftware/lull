@@ -83,8 +83,8 @@
     }
 
     onDestroy(() => {
-		birdsSingingAudio.pause();
-        oceanAudio.pause();
+		if (birdsSingingAudio) birdsSingingAudio.pause();
+        if (oceanAudio) oceanAudio.pause();
 	});
 </script>
 
