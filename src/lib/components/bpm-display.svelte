@@ -1,9 +1,11 @@
 <script lang="ts">
+	/*
 	import ArrowDown from '$lib/icons/ArrowDown.svelte';
 	import ArrowUp from '$lib/icons/ArrowUp.svelte';
 	import DoubleArrowDown from '$lib/icons/DoubleArrowDown.svelte';
 	import DoubleArrowUp from '$lib/icons/DoubleArrowUp.svelte';
 	import Line from '$lib/icons/Line.svelte';
+	*/
 	import LoadingIcon from '$lib/icons/Loading.svelte';
 	import { cn } from '$lib/utils';
 	export let abstract = false;
@@ -16,6 +18,12 @@
 	export let bpm: number | undefined;
 
 	import { bpm_limits } from '$lib/../resources/bpm_limits';
+
+	import Heart from '$lib/icons/Heart.svelte';
+	import Meditation from '$lib/icons/Meditation.svelte';
+	import RevolvingHearts from '$lib/icons/RevolvingHearts.svelte';
+	import TwoHearts from '$lib/icons/TwoHearts.svelte';
+	import OutlineHeart from '$lib/icons/OutlineHeart.svelte';
 </script>
 
 <p class={cn('w-xs flex flex-col items-center gap-2 text-center z-10', _class)}>
@@ -27,17 +35,17 @@
 					maximumFractionDigits: 0
 				})}
 			{:else if bpm < bpm_limits.veryLow}
-				<DoubleArrowDown class="w-12 h-12" />
+				<Meditation class="w-12 h-12" />
 			{:else if bpm < bpm_limits.low}
-				<ArrowDown class="w-12 h-12" />
+				<OutlineHeart class="w-12 h-12" />
 			{:else if bpm < bpm_limits.medium}
-				<Line class="w-12 h-12" />
+				<Heart class="w-12 h-12" />
 			{:else if bpm < bpm_limits.high}
-				<ArrowUp class="w-12 h-12" />
+				<TwoHearts class="w-12 h-12" />
 			{:else if bpm < bpm_limits.veryHigh}
-				<DoubleArrowUp class="w-12 h-12" />
+				<RevolvingHearts class="w-12 h-12" />
 			{:else}
-				<DoubleArrowUp class="w-12 h-12" />
+				<RevolvingHearts class="w-12 h-12" />
 			{/if}
 		</span>
 	{:else}
