@@ -5,7 +5,7 @@
 
 	const finishTutorial = () => {
 		$method = 'camera';
-		goto('/camera/scenes');
+		goto('/scenes');
 	};
 </script>
 

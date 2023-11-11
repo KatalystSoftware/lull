@@ -7,7 +7,7 @@
 
 	onMount(() => {
 		if ($method === 'camera') {
-			goto('/camera/scenes');
+			goto('/scenes');
 		}
 	});
 </script>

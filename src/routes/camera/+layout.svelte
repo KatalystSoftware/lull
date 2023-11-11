@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { mediaStream, samplingCanvas, videoElement } from '$lib/stores';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 
 	const SUPPORTS_MEDIA_DEVICES = browser && 'mediaDevices' in navigator;
 	const SUPPORTS_IMAGE_CAPTURE = browser && 'ImageCapture' in window;
@@ -46,6 +46,13 @@
 	onMount(() => {
 		if (!$mediaStream) {
 			obtainVideoCamera();
+		}
+	});
+
+	onDestroy(() => {
+		if ($mediaStream) {
+			$mediaStream.getTracks().forEach((track) => track.stop());
+			$mediaStream = null;
 		}
 	});
 </script>
