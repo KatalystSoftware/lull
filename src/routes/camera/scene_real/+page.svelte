@@ -1,6 +1,8 @@
 <script lang="ts">
 	import BpmDisplay from '$lib/components/bpm-display.svelte';
 	import VideoPlayer from '$lib/components/videoplayer.svelte';
+	import { averageBpmReal } from '$lib/stores';
+
 </script>
 
 <main
@@ -8,9 +10,10 @@
 >
 	<h2 class="sr-only">Camera Tutorial - Step 3</h2>
 
-	<VideoPlayer></VideoPlayer>
+	<VideoPlayer bpm={$averageBpmReal}></VideoPlayer>
 	
 	<BpmDisplay
+		bpm={$averageBpmReal}
 		abstract
 		class=" bg-white/40 backdrop-blur-xl w-16 rounded-full aspect-square justify-center absolute top-4 right-4"
 	/>
