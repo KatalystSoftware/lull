@@ -6,6 +6,7 @@
 	import { cn } from '$lib/utils';
 
 	$: demo = $page.url.searchParams.get('demo') === 'true';
+	$: debug = $page.url.searchParams.get('debug') === 'true';
 	$: averageBpm = demo ? $averageBpmFake : $averageBpmReal;
 </script>
 
@@ -14,8 +15,8 @@
 
 	<BpmDisplay
 		bpm={averageBpm}
-		abstract={!demo}
-		size={demo ? 'sm' : 'lg'}
+		abstract={!debug}
+		size={debug ? 'sm' : 'lg'}
 		class={cn(
 			'bg-white/40 backdrop-blur-xl w-20 rounded-full aspect-square justify-center absolute top-4 right-4 z-[2147483648]'
 		)}
