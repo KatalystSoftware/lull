@@ -33,8 +33,8 @@ export const getVideoSpeedFromBpm = (bpm: number) => {
 
 	const minBpm = 40;
 	const maxBpm = 120;
-	const minSpeed = 0.75;
-	const maxSpeed = 1.5;
+	const minSpeed = 0.5;
+	const maxSpeed = 2;
 
 	const speedRange = maxSpeed - minSpeed;
 	const bpmRange = maxBpm - minBpm;
