@@ -1,17 +1,41 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
+
+	const SUPPORTS_IMAGE_CAPTURE = browser && 'ImageCapture' in window;
+
 	let videoSource: HTMLVideoElement | null = null;
 	let loading = false;
-	let facing: 'user' | 'environment' = 'environment';
+
 	const obtainVideoCamera = async () => {
 		try {
 			loading = true;
-			const stream = await navigator.mediaDevices.getUserMedia({
+			const devices = await navigator.mediaDevices.enumerateDevices();
+			const cameras = devices.filter((device) => device.kind === 'videoinput');
+
+			if (cameras.length === 0) {
+				throw new Error('No cameras found');
+			}
+
+			const camera = cameras[0];
+			const mediaStream = await navigator.mediaDevices.getUserMedia({
 				video: {
-					facingMode: facing
+					deviceId: camera.deviceId,
+					facingMode: 'environment',
+					width: { ideal: 4096 },
+					height: { ideal: 2160 }
 				}
 			});
+			const videoTrack = mediaStream.getVideoTracks()[0];
+			const imageCapture = SUPPORTS_IMAGE_CAPTURE ? new ImageCapture(videoTrack) : undefined;
+			const photoCapabilities = await imageCapture?.getPhotoCapabilities();
+			if (photoCapabilities?.fillLightMode?.includes('flash')) {
+				await videoTrack.applyConstraints({
+					advanced: [{ torch: true }]
+				});
+			}
+
 			if (videoSource) {
-				videoSource.srcObject = stream;
+				videoSource.srcObject = mediaStream;
 				videoSource.play();
 			} else {
 				console.error('videoSource not found');
@@ -29,8 +53,5 @@
 	{/if}
 	<!-- svelte-ignore a11y-media-has-caption -->
 	<video bind:this={videoSource} />
-	<button on:click={obtainVideoCamera}>Refresh camera</button>
-	<button on:click={() => (facing = facing === 'user' ? 'environment' : 'user')}>
-		{facing === 'user' ? 'Front camera' : 'Back camera'}
-	</button>
+	<button on:click={obtainVideoCamera}>Get camera</button>
 </div>

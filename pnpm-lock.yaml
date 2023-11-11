@@ -14,6 +14,9 @@ devDependencies:
   '@sveltejs/kit':
     specifier: ^1.27.4
     version: 1.27.4(svelte@4.2.3)(vite@4.5.0)
+  '@types/w3c-image-capture':
+    specifier: ^1.0.10
+    version: 1.0.10
   '@typescript-eslint/eslint-plugin':
     specifier: ^6.10.0
     version: 6.10.0(@typescript-eslint/parser@6.10.0)(eslint@8.53.0)(typescript@5.2.2)
@@ -1821,6 +1824,16 @@ packages:
 
   /@types/trusted-types@2.0.6:
     resolution: {integrity: sha512-HYtNooPvUY9WAVRBr4u+4Qa9fYD1ze2IUlAD3HoA6oehn1taGwBx3Oa52U4mTslTS+GAExKpaFu39Y5xUEwfjg==}
+    dev: true
+
+  /@types/w3c-image-capture@1.0.10:
+    resolution: {integrity: sha512-7DR36sb0os7qVy2HI9wW6BV9oFjZVA8xnKM0cZGdL5XKa6ZgurA+U8T8xUNccERiWkvk641bAItMWCU++1B7jg==}
+    dependencies:
+      '@types/webrtc': 0.0.40
+    dev: true
+
+  /@types/webrtc@0.0.40:
+    resolution: {integrity: sha512-1Wk5NiYM81TOeK77AYKouD/GrcTceSRfKHOn/jofhwAeg5N16z4cL+D8WOquYaWxv5XydJ9fPnHiI+CeIaSz3A==}
     dev: true
 
   /@typescript-eslint/eslint-plugin@6.10.0(@typescript-eslint/parser@6.10.0)(eslint@8.53.0)(typescript@5.2.2):
