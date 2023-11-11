@@ -12,6 +12,6 @@
 
 	<BPMMeter />
 {:else}
-	<p>Camera not setup correctly</p>
-	<a href="/camera/setup" class="underline">Go back to setup</a>
+	<p>Camera not setup correctly!</p>
+	<a href="/" class="underline">Go back to home</a>
 {/if}

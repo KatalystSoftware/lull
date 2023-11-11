@@ -9,7 +9,7 @@
 
 <div class="flex flex-col gap-4">
 	<a
-		href="/camera/setup"
+		href="/camera/tutorial"
 		class="bg-emerald-200 border-2 rounded-lg flex items-center gap-4 px-4 py-8 border-emerald-800"
 	>
 		<div class="bg-sky-200 p-4 rounded-full aspect-square w-fit">
