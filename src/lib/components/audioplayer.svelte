@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
+    import { onDestroy } from 'svelte';
 
 	export let bpm: number | undefined;
 
@@ -80,5 +81,10 @@
             }
         }
     }
+
+    onDestroy(() => {
+		birdsSingingAudio.pause();
+        oceanAudio.pause();
+	});
 </script>
 
