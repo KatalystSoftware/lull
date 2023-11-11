@@ -12,30 +12,23 @@
 	});
 </script>
 
-<h1 class="uppercase text-4xl text-center">lull</h1>
+<main class="p-4 flex flex-1 flex-col justify-start gap-16">
+	<p class="font-medium text-xl text-center">Choose a device for tracking your pulse</p>
 
-<p>Measure your heart rate with your phone camera or smartwatch.</p>
-
-<div class="flex flex-col gap-4">
-	<a
-		href="/camera/tutorial"
-		class="bg-emerald-200 border-2 rounded-lg flex items-center gap-4 px-4 py-8 border-emerald-800"
-	>
-		<div class="bg-sky-200 p-4 rounded-full aspect-square w-fit">
+	<div class="flex flex-col gap-4">
+		<a href="/camera/tutorial" class="bg-white/40 rounded-lg flex items-center gap-4 px-8 py-6">
 			<Camera class="w-6 h-6" />
-		</div>
-		<span class="font-medium text-lg">Use phone camera.</span>
-	</a>
-	<button
-		disabled
-		class="relative bg-emerald-200 border-2 rounded-lg flex items-center gap-4 px-4 py-8 border-emerald-800 disabled:opacity-50 disabled:cursor-not-allowed"
-	>
-		<div class="bg-amber-200 p-4 rounded-full aspect-square w-fit">
+			<span class="font-medium text-lg">Use phone camera.</span>
+		</a>
+		<button
+			disabled
+			class="relative bg-white/40 rounded-lg flex items-center gap-4 px-8 py-6 disabled:opacity-50 disabled:cursor-not-allowed"
+		>
 			<Watch class="w-6 h-6" />
-		</div>
-		<p class="flex flex-col items-start">
-			<span class="font-medium text-lg">Use smartwatch.</span>
-			<span class="text-xs">Coming soon.</span>
-		</p>
-	</button>
-</div>
+			<p class="flex flex-col items-start">
+				<span class="font-medium text-lg">Use smartwatch.</span>
+				<span class="text-xs">Coming soon.</span>
+			</p>
+		</button>
+	</div>
+</main>
