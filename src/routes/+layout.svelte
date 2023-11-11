@@ -1,5 +1,6 @@
 <script>
 	import '@fontsource/kodchasan';
+	import '@fontsource/poppins';
 	import '../app.css';
 
 	import { pwaInfo } from 'virtual:pwa-info';
@@ -15,6 +16,6 @@
 </svelte:head>
 
 <div class="p-8 flex flex-col gap-8 h-screen relative backdrop-blur-2xl bg-red-50/50">
-	<h1 class="text-left uppercase text-3xl"><a href="/">lu<br />ll</a></h1>
+	<h1 class="text-left uppercase text-3xl font-title"><a href="/">lu<br />ll</a></h1>
 	<slot />
 </div>

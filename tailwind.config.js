@@ -6,7 +6,8 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				sans: ['Kodchasan', ...defaultTheme.fontFamily.sans]
+				title: ['Kodchasan', ...defaultTheme.fontFamily.sans],
+				sans: ['Poppins', ...defaultTheme.fontFamily.sans]
 			}
 		}
 	},

@@ -16,9 +16,12 @@
 	<p class="font-medium text-xl text-center">Choose a device for tracking your pulse</p>
 
 	<div class="flex flex-col gap-4">
-		<a href="/camera/tutorial" class="bg-white/40 rounded-lg flex items-center gap-4 px-8 py-6">
+		<a
+			href="/camera/tutorial/step-1"
+			class="bg-white/40 rounded-lg flex items-center gap-4 px-8 py-6"
+		>
 			<Camera class="w-6 h-6" />
-			<span class="font-medium text-lg">Use phone camera.</span>
+			<span class="font-medium text-lg">Phone camera</span>
 		</a>
 		<button
 			disabled
@@ -26,8 +29,8 @@
 		>
 			<Watch class="w-6 h-6" />
 			<p class="flex flex-col items-start">
-				<span class="font-medium text-lg">Use smartwatch.</span>
-				<span class="text-xs">Coming soon.</span>
+				<span class="font-medium text-lg">Smartwatch</span>
+				<span class="text-xs">Coming soon</span>
 			</p>
 		</button>
 	</div>

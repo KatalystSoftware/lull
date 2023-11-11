@@ -59,16 +59,6 @@
 
 <slot />
 
-{#if browser && !SUPPORTS_MEDIA_DEVICES}
-	<p class="text-red-500">Unfortunately camera access is not supported on your device.</p>
-{/if}
-
-{#if browser && !SUPPORTS_IMAGE_CAPTURE}
-	<p class="text-amber-500">
-		Unable to turn on flashlight automatically, please turn it on manually.
-	</p>
-{/if}
-
 <div class="sr-only">
 	<!-- svelte-ignore a11y-media-has-caption -->
 	<video id="camera-feed" bind:this={$videoElement} />

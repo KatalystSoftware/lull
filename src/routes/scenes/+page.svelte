@@ -17,7 +17,7 @@
 				<span class="absolute left-0 top-0 rounded-br-xl bg-white/80 px-2 py-1"
 					>{rtf.format(-index, 'days')}</span
 				>
-				<img src="https://picsum.photos/600/200?random={index}" alt="" width="600" height="200" />
+				<img src="https://picsum.photos/id/{index + 10}/600/200" alt="" width="600" height="200" />
 			</a>
 		</li>
 	{/each}
