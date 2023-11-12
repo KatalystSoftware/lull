@@ -65,12 +65,12 @@
 	</a>
 	<div class="relative h-96 rounded-xl overflow-clip">
 		<ul
-			class="space-y-4 overflow-y-scroll snap-y snap-proximity h-full"
+			class="space-y-4 overflow-y-scroll h-full"
 			bind:this={sceneList}
-			on:scroll={updateScroll}
+			on:scroll={updateScroll}	
 		>
 			{#each { length: 8 } as _, index}
-				<li class="rounded-xl overflow-clip snap-start h-24 ">
+				<li class="rounded-xl overflow-clip h-24 ">
 					<button
 						on:click={(event) => event?.currentTarget?.parentElement?.classList?.toggle('active')}
 						class="font-medium text-xl relative focus-visible:opacity-60 hover:opacity-80"
