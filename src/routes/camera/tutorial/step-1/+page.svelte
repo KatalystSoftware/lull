@@ -16,10 +16,17 @@
 		Be sure to hold the phone still, preferable lay it down on a solid surface
 	</p>
 
-	<a
-		href={$averageBpmReal ? '/camera/tutorial/step-2' : undefined}
-		aria-disabled={!$averageBpmReal}
-		class="block text-center font-medium text-lg aria-disabled:opacity-50 aria-disabled:cursor-not-allowed"
-		>Continue</a
-	>
+	<div class="space-y-4">
+		<a
+			href={$averageBpmReal ? '/camera/tutorial/step-2' : undefined}
+			aria-disabled={!$averageBpmReal}
+			class="block text-center font-medium text-lg aria-disabled:opacity-50 aria-disabled:cursor-not-allowed"
+			>Continue</a
+		>
+		<a
+			href="/scenes"
+			class="block text-center font-medium text-lg aria-disabled:opacity-50 aria-disabled:cursor-not-allowed"
+			>Skip tutorial</a
+		>
+	</div>
 </main>
