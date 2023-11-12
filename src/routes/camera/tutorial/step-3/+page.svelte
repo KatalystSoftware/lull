@@ -18,6 +18,6 @@
 	<a
 		href="/scenes"
 		class="z-[2147483648] rounded-xl w-fit py-3 px-4 font-semibold tracking-wider text-lg bg-neutral-700/30 backdrop-blur-lg text-white shadow-lg drop-shadow-lg absolute bottom-6 right-0 left-0 mx-auto"
-		>Finish scene</a
+		>Finish tutorial</a
 	>
 </main>
