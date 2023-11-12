@@ -4,6 +4,7 @@
 	import Watch from '$lib/icons/Watch.svelte';
 	import { method } from '$lib/stores';
 	import { onMount } from 'svelte';
+	import Cross from '$lib/icons/Cross.svelte';
 
 	onMount(() => {
 		if ($method === 'camera') {
@@ -33,5 +34,17 @@
 				<span class="text-xs">Coming soon</span>
 			</p>
 		</button>
+		<hr class="border-t-2 border-red-200/90">
+		<a
+			href="/scenes"
+			class="bg-white/40 rounded-lg flex items-center gap-4 px-8 py-6"
+		>
+			<Cross class="w-6 h-6" />
+			<p class="flex flex-col items-start">
+				<span class="font-medium text-lg">Simulated data only </span>
+				<span class="text-xs text-neutral-500">(iPhone/Laptop)</span>
+			</p>
+		</a>
+
 	</div>
 </main>
