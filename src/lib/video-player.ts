@@ -16,6 +16,10 @@ export class SpecialVideoPlayer {
 		this.interval = setInterval(() => {
 			this.processActivationQueue();
 		}, 3000);
+
+		setTimeout(() => {
+			this.processActivationQueue();
+		}, 1000)
 	}
 
 	activationQueue: string[] = [];

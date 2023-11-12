@@ -6,7 +6,7 @@
 	onMount(() => {
 		setTimeout(() => {
 			goto('/camera/tutorial/step-3');
-		}, 3000);
+		}, 6000);
 	});
 </script>
 
@@ -14,7 +14,7 @@
 	<h2 class="sr-only">Camera Tutorial - Step 2</h2>
 
 	<p class="font-medium text-xl text-center">
-		Follow your pulse through the changes in the landscape and calm yourself down
+		Follow your pulse through the changes in the landscape and relax yourself
 	</p>
 
 	<Loading class="w-16 h-16" />

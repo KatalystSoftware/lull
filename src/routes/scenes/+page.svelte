@@ -22,7 +22,7 @@
 	}
 
 	.graph {
-		transition: opacity 1s;
+		transition: opacity 0.1s;
 		opacity: 0;
 		position: absolute;
 		top: 89px;

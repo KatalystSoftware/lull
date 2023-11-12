@@ -19,7 +19,7 @@
 	import Pulse5Icon from '$lib/icons/Pulse5.svelte';
 </script>
 
-<p class={cn('w-xs flex flex-col items-center gap-2 text-center z-10', _class)}>
+<p class={cn('w-xs flex flex-col items-center gap-2 text-center z-10', !abstract && 'pb-3', _class)}>
 	{#if bpm}
 		<span
 			class={cn('text-8xl font-medium w-xs', size === 'lg' ? 'text-8xl' : 'text-4xl text-white')}
@@ -56,6 +56,15 @@
 				/>
 			{/if}
 		</span>
+		{#if !abstract}
+			<span style="
+				position: absolute;
+				top: 31px;
+				color: white;
+				font-size: 12px;
+			">bpm
+			</span>
+		{/if}
 	{:else}
 		<span class="text-8xl font-medium w-xs">
 			<LoadingIcon class="w-12 h-12" />
