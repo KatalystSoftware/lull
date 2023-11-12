@@ -3,7 +3,7 @@
 	<ul class="text-center font-medium text-lg space-y-4">
 		<li>
 			<a
-				href="/camera/scene?demo=true&debug=true"
+				href="/debug/scene?demo=true&debug=true"
 				class="hover:bg-white/70 rounded-lg bg-white/40 backdrop-blur-lg px-8 py-6"
 			>
 				<p>Anxious</p>
