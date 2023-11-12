@@ -12,6 +12,48 @@
 		scrollRatio = scroll / maxScroll;
 	};
 </script>
+<style>
+	li {
+		transition: height 0.2s;
+	}
+
+	:global(li.active) {
+		height: 11rem;
+	}
+
+	.graph {
+		transition: opacity 1s;
+		opacity: 0;
+		position: absolute;
+		top: 89px;
+		background-color: #595959e8;
+		border-radius: 24px;
+		padding: 7px;
+		left: 50%;
+    	transform: translate(-50%, -50%);
+	}
+
+	button {
+		width: -webkit-fill-available;
+	}
+
+	:global(li.active > button > .graph) {
+		opacity: 1 !important
+	}
+
+	img {
+		object-position: 50% 50%;
+	}
+
+	.imagediv {
+		background-size: cover;
+		background-position: 50% 70%;
+		background-repeat: no-repeat;
+		width: 100%;
+		height: 200px;
+	}
+
+</style>
 
 <main class="p-4 flex flex-1 flex-col justify-start gap-8 h-full">
 	<a
@@ -28,22 +70,26 @@
 			on:scroll={updateScroll}
 		>
 			{#each { length: 8 } as _, index}
-				<li class="rounded-xl overflow-clip snap-start h-24">
-					<a
-						href="/scenes/{index + 11}"
+				<li class="rounded-xl overflow-clip snap-start h-24 ">
+					<button
+						on:click={(event) => event?.currentTarget?.parentElement?.classList?.toggle('active')}
 						class="font-medium text-xl relative focus-visible:opacity-60 hover:opacity-80"
 					>
 						<span
 							class="absolute left-0 text-sm top-0 rounded-br-xl rounded-tl-xl w-30 text-center bg-neutral-700/30 backdrop-blur-lg text-white px-2 py-1"
 							>{rtf.format(-index, 'days')}</span
 						>
-						<img
-							src="https://picsum.photos/id/{index + 11}/600/200"
-							alt=""
-							width="600"
-							height="200"
+						<div
+							class="imagediv"
+							style="background-image:url(https://picsum.photos/id/{index + 11}/600/400)"
 						/>
-					</a>
+						<div class="graph">
+							<img
+								src="/graphs/{index%3 +1}.png"
+								alt="Graph Showing Pulse"
+							/>
+						</div>
+					</button>
 				</li>
 			{/each}
 		</ul>
