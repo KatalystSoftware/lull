@@ -72,6 +72,7 @@ export class SpecialVideoPlayer {
 		element.loop = true;
 		element.src = path;
 		element.playsInline = true;
+		element.style.pointerEvents = 'none';
 		return element;
 	}
 
