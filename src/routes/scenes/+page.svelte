@@ -43,6 +43,9 @@
 
 	img {
 		object-position: 50% 50%;
+		height: calc(82px * 1.25);
+   		width: calc(171px * 1.25);
+		max-width: unset;
 	}
 
 	.imagediv {
