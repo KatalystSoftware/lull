@@ -82,6 +82,8 @@ export const calculateBpm = (samples: Sample[]) => {
 
 	const bpm = 60000 / averageInterval;
 
+	return bpm
+	
 	// Clamp bpm to a reasonable range
 	return Math.max(MIN_BPM, Math.min(bpm, MAX_BPM));
 };
