@@ -22,7 +22,7 @@
 			class="bg-white/40 rounded-lg flex items-center gap-4 px-8 py-6"
 		>
 			<Camera class="w-6 h-6" />
-			<span class="font-medium text-lg">Phone camera</span>
+			<span class="font-medium text-lg">Android camera</span>
 		</a>
 		<button
 			disabled
