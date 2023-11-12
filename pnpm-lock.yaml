@@ -25,6 +25,9 @@ devDependencies:
   '@types/w3c-image-capture':
     specifier: ^1.0.10
     version: 1.0.10
+  '@types/web-bluetooth':
+    specifier: ^0.0.20
+    version: 0.0.20
   '@typescript-eslint/eslint-plugin':
     specifier: ^6.10.0
     version: 6.10.0(@typescript-eslint/parser@6.10.0)(eslint@8.53.0)(typescript@5.2.2)
@@ -1852,6 +1855,10 @@ packages:
     resolution: {integrity: sha512-7DR36sb0os7qVy2HI9wW6BV9oFjZVA8xnKM0cZGdL5XKa6ZgurA+U8T8xUNccERiWkvk641bAItMWCU++1B7jg==}
     dependencies:
       '@types/webrtc': 0.0.40
+    dev: true
+
+  /@types/web-bluetooth@0.0.20:
+    resolution: {integrity: sha512-g9gZnnXVq7gM7v3tJCWV/qw7w+KeOlSHAhgF9RytFyifW6AF61hdT2ucrYhPq9hLs5JIryeupHV3qGk95dH9ow==}
     dev: true
 
   /@types/webrtc@0.0.40:

@@ -1,6 +1,7 @@
 /// <reference types="vite-plugin-pwa/svelte" />
 /// <reference types="vite-plugin-pwa/info" />
 /// <reference types="@types/w3c-image-capture" />
+/// <reference types="@types/web-bluetooth" />
 
 import type { SpecialVideoPlayer } from '$lib/video-player';
 
