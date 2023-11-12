@@ -1,12 +1,4 @@
 <script lang="ts">
-	/*
-	import ArrowDown from '$lib/icons/ArrowDown.svelte';
-	import ArrowUp from '$lib/icons/ArrowUp.svelte';
-	import DoubleArrowDown from '$lib/icons/DoubleArrowDown.svelte';
-	import DoubleArrowUp from '$lib/icons/DoubleArrowUp.svelte';
-	import Line from '$lib/icons/Line.svelte';
-	*/
-	import LoadingIcon from '$lib/icons/Loading.svelte';
 	import { cn } from '$lib/utils';
 	export let abstract = false;
 	export let label = false;
@@ -19,33 +11,49 @@
 
 	import { bpm_limits } from '$lib/../resources/bpm_limits';
 
-	import Heart from '$lib/icons/Heart.svelte';
-	import Meditation from '$lib/icons/Meditation.svelte';
-	import RevolvingHearts from '$lib/icons/RevolvingHearts.svelte';
-	import TwoHearts from '$lib/icons/TwoHearts.svelte';
-	import OutlineHeart from '$lib/icons/OutlineHeart.svelte';
+	import LoadingIcon from '$lib/icons/Loading.svelte';
+	import Pulse1Icon from '$lib/icons/Pulse1.svelte';
+	import Pulse2Icon from '$lib/icons/Pulse2.svelte';
+	import Pulse3Icon from '$lib/icons/Pulse3.svelte';
+	import Pulse4Icon from '$lib/icons/Pulse4.svelte';
+	import Pulse5Icon from '$lib/icons/Pulse5.svelte';
 </script>
 
 <p class={cn('w-xs flex flex-col items-center gap-2 text-center z-10', _class)}>
 	{#if bpm}
-		<span class={cn('text-8xl font-medium w-xs', size === 'lg' ? 'text-8xl' : 'text-4xl')}>
+		<span
+			class={cn('text-8xl font-medium w-xs', size === 'lg' ? 'text-8xl' : 'text-4xl text-white')}
+		>
 			{#if !abstract}
 				{bpm?.toLocaleString('en', {
 					minimumFractionDigits: 0,
 					maximumFractionDigits: 0
 				})}
-			{:else if bpm < bpm_limits.veryLow}
-				<Meditation class="w-12 h-12" />
-			{:else if bpm < bpm_limits.low}
-				<OutlineHeart class="w-12 h-12" />
-			{:else if bpm < bpm_limits.medium}
-				<Heart class="w-12 h-12" />
-			{:else if bpm < bpm_limits.high}
-				<TwoHearts class="w-12 h-12" />
-			{:else if bpm < bpm_limits.veryHigh}
-				<RevolvingHearts class="w-12 h-12" />
 			{:else}
-				<RevolvingHearts class="w-12 h-12" />
+				<Pulse1Icon
+					class={cn('sr-only text-red-50/70 w-12 h-12', bpm < bpm_limits.veryLow && 'not-sr-only')}
+				/>
+				<Pulse2Icon
+					class={cn(
+						'sr-only text-red-100/70 w-12 h-12',
+						bpm_limits.veryLow < bpm && bpm <= bpm_limits.low && 'not-sr-only'
+					)}
+				/>
+				<Pulse3Icon
+					class={cn(
+						'sr-only text-red-100/80 w-12 h-12',
+						bpm_limits.low < bpm && bpm <= bpm_limits.medium && 'not-sr-only'
+					)}
+				/>
+				<Pulse4Icon
+					class={cn(
+						'sr-only text-red-100/80 w-12 h-12',
+						bpm_limits.medium < bpm && bpm <= bpm_limits.high && 'not-sr-only'
+					)}
+				/>
+				<Pulse5Icon
+					class={cn('sr-only text-red-200/80 w-12 h-12', bpm > bpm_limits.high && 'not-sr-only')}
+				/>
 			{/if}
 		</span>
 	{:else}

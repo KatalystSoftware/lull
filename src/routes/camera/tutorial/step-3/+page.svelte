@@ -10,14 +10,14 @@
 	<BpmDisplay
 		bpm={$averageBpmReal}
 		abstract
-		class="bg-white/40 backdrop-blur-xl w-16 rounded-full aspect-square justify-center absolute z-[2147483648] top-4 right-4"
+		class="backdrop-blur w-12 rounded-full aspect-square justify-center absolute z-[2147483648] top-4 right-4"
 	/>
 
 	<VideoPlayer class="overflow-hidden flex-1" bpm={$averageBpmReal} />
 
 	<a
 		href="/scenes"
-		class="z-[2147483648] rounded-lg w-fit py-2 px-3 font-medium text-lg bg-white/80 backdrop-blur-lg absolute bottom-6 right-6"
+		class="z-[2147483648] rounded-xl w-fit py-3 px-4 font-semibold tracking-wider text-lg bg-neutral-700/30 backdrop-blur-lg text-white shadow-lg drop-shadow-lg absolute bottom-6 right-0 left-0 mx-auto"
 		>Finish scene</a
 	>
 </main>
