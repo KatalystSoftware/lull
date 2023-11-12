@@ -58,8 +58,8 @@
 
 <slot />
 
-<div class="sr-only">
+<div class="sr-only pointer-events-none">
 	<!-- svelte-ignore a11y-media-has-caption -->
-	<video id="camera-feed" bind:this={$videoElement} />
+	<video id="camera-feed" playsInline bind:this={$videoElement} />
 	<canvas id="sampling-canvas" width="30" height="30" bind:this={$samplingCanvas} />
 </div>
